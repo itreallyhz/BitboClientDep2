@@ -1,0 +1,246 @@
+{% extends 'main/index.html' %}
+{% load static %}
+{% block content %}
+
+<!-- add incident -->
+
+            <div class="container">
+                
+                <form action="">
+                    <div class="row">
+                    <div class="card">
+                        <div class="card-header align-items-center d-flex justify-content-between">
+                            <h4 class="mb-sm-0">Case Incident</h4>
+                        </div>
+                        
+                        <div class="row">
+                        <div class="col-lg-6">
+                        <div class="asterisk">
+                            <label for="" class="form-label"><br>Case Title<span> *</span></label>
+                            <input type="form" class="form-control" id="case_title" placeholder="Enter Case Title">
+                        </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="asterisk">
+                            <label for="" class="form-label"></br>Date<span> *</span></label>
+                            <input type="date" class="form-control" id="happened">
+                        </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6"> 
+                        <label class="form-label1" for="des-info-description-input"><br>Case Description</label>
+                        <textarea class="form-control" placeholder="Enter Description" id="description" rows="6"></textarea>
+                       </div>
+                    <div class="col-lg-6"> 
+                        <div class="asterisk">
+                        <label for="Compliant" class="form-label1"><br>Status<span> *</span></label>
+                        <select class="form-select" id="status">
+                            <option value="" disabled selected>Select Status</option>
+                            <option value="ongoing">Ongoing</option>
+                            <option value="done">Done</option>
+                            <option value="pending">Pending</option>
+                            
+                        </select>
+                    </div>
+
+                    <label for="formFile" class="form-label"><br>Upload File</label>
+                    <input class="form-control" type="file" id="formFile" />
+                </div>
+                
+                </div>
+                <div class="row">
+                    <div class="col-lg-6"> 
+                        <div class="asterisk">
+                        <label for="Compliant" class="form-label1"><br>Name of Complainant<span> *</span></label>
+                        <input type="form" class="form-control" id="complainant" placeholder="Name of complainant">
+                    </div>
+                </div>
+
+                    <div class="col-lg-6"> 
+                        <div class="asterisk">
+                        <label for="" class="form-label1"><br>Subject to Complaint<span> *</span></label>
+                        <input type="form" class="form-control" id="subject_complaint" placeholder="subject to complaint">
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-lg-6"> 
+                    <div class="asterisk">
+                    <label for="" class="form-label1"><br>Name of Witness<span> *</span></label>
+                    <input type="form" class="form-control" id="witness" placeholder="Name of Witness">
+                </div>
+            </div>
+        
+                <div class="col-lg-6"> 
+                    <div class="asterisk">
+                    <label for="" class="form-label1"><br>Place<span> *</span></label>
+                    <input type="form" class="form-control" id="place" placeholder="Place">
+                </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-lg-6"> 
+                <div class="asterisk">
+                <label for="" class="form-label1"><br>Name of Officer<span> *</span></label>
+                <input type="form" class="form-control" id="officer" placeholder="Name of Officer in charge">
+            </div>
+        </div>
+        </div>
+                        <div class="mt-4">
+                            <div class="hstack gap-2 justify-content-end">
+                                <button class="btn btn-primary waves-effect waves-light cancel-button" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">Cancel</button>
+                                <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-body text-center p-5">
+                                                <div class="mt-4">
+                                                    <h4 class="mb-3">Are you sure you want to cancel?</h4>
+                                                    <div class="hstack gap-2 justify-content-center">
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">No</button>
+                                                        <a href="{% url 'incident_logs' %}" class="btn btn-danger">Yes</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
+                                <button type="button" class="btn btn-success waves-effect waves-light save-button" data-bs-toggle="modal" data-bs-target="#firstmodal">Save</button>
+                                <!-- First modal dialog -->
+                                        <div class="modal fade" id="firstmodal" aria-hidden="true" tabindex="-1">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-body text-center p-5">
+                                                        <lord-icon src="https://cdn.lordicon.com/tdrtiskw.json" trigger="loop" colors="primary:#f7b84b,secondary:#405189" style="width:130px;height:130px">
+                                                        </lord-icon>
+                                                        <div class="mt-4 pt-4">
+                                                            <h4>Are you sure you want to save it?</h4>
+                                                         <!-- Toogle to second dialog -->
+                                                         <button class="btn btn-light" data-bs-target="#firstmodal" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</button>
+                                                         <a href ="{% url 'add_incident' %}"class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#secondmodal" onclick="submitForm()">Yes</a>
+                                                         <!-- <button class="btn btn-warning" data-bs-target="#secondmodal" data-bs-toggle="modal" data-bs-dismiss="modal" onclick="submitForm()">Yes</button> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Second modal dialog -->
+                                        <div class="modal fade" id="secondmodal" aria-hidden="true" tabindex="-1">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-body text-center p-5">
+                                                        <lord-icon src="https://cdn.lordicon.com/zpxybbhl.json" trigger="loop" colors="primary:#405189,secondary:#0ab39c" style="width:150px;height:150px">
+                                                        </lord-icon>
+                                                        <div class="mt-4 pt-3">
+                                                            <h4 class="mb-3">Your forms are succesfully saved!</h4>
+                                                            <div class="hstack gap-2 justify-content-center">
+                                                                <a href="{% url 'add_incident' %}"  class="btn btn-light">Close</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                     </div>
+                             </div><!-- end save button -->
+                        </div><!-- end button container -->
+                            </div>
+                        </div>
+                        <br>
+               
+            </div>
+            </div>
+        </form>
+            </div>
+            
+     
+       
+<!--end add board modal-->
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/add_incident.css' %}">
+{% endblock %}
+
+{% block js %}
+
+
+
+<script src="{% static 'libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js' %}"></script>
+ 
+ <!-- dropzone js -->
+ <script src="{% static 'libs/dropzone/dropzone-min.js' %}"></script>
+ <!-- project-create init -->
+ <script src="{% static 'js/pages/project-create.init.js' %}"></script>
+
+ <!-- App js -->
+ <script src="{% static 'js/app.js' %}"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+ <script>  
+    // Function to handle form submission
+    function submitForm() {
+        // Create a FormData object
+        var formData = new FormData();
+    
+        // Append form fields to formData
+        formData.append('case_title', $('#case_title').val());
+        formData.append('case_description', $('#description').val());
+        formData.append('complainant', $('#complainant').val());
+        formData.append('witness', $('#witness').val());
+        formData.append('officer', $('#officer').val());
+        formData.append('subject_complaint', $('#subject_complaint ').val());
+        formData.append('place', $('#place').val());
+        formData.append('happened', $('#happened ').val());
+        formData.append('status', $('#status').val());
+      
+    
+        var fileInput = $('#formFile')[0];
+    
+        if (fileInput.files.length > 0) {
+            formData.append('photo_path', fileInput.files[0]);
+        } else {
+            console.error("No file selected");
+            return;
+        }
+    
+        console.log("Form Data:", formData);
+    
+        $.ajax({
+            url: 'https://bitbo-standard-dep-dd2462e5a0a8.herokuapp.com/incidents/add',
+            type: 'POST',
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('token')
+            },
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Error:", status, error);
+                var responseJSON = xhr.responseJSON;
+                if (responseJSON && responseJSON.detail) {
+                    console.error("Detailed Error:", responseJSON.detail);
+                }
+            }
+        });
+    }
+    
+     //SECURITY
+         // Check for the token when the page loads
+         document.addEventListener("DOMContentLoaded", function() {
+             var token = localStorage.getItem('token');
+             if (token) {
+                 // Show the services content if the token is present
+                 document.getElementById('whole-content').style.display = 'block';
+             } else {
+                 // Redirect to login if token is not present
+                 window.location.href = "/login";  // Adjust the login page URL if necessary
+             }
+         });
+    </script>
+
+{% endblock %}
+
+
+{% endblock %}

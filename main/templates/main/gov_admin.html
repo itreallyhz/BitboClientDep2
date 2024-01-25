@@ -1,0 +1,522 @@
+<div id="whole-content" style="display: none;">
+    {% extends 'main/index.html' %}
+    {% load static %}
+    {% block content %}
+    
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0">GOVERNANCE AND ORDINANCES</h4>
+                    <div class="hstack gap-2">
+                        <a href="{% url 'view_gov' %}" class="btn btn-primary">
+                            <i class="ri-add-line align-bottom me-1"></i> Add Ordinances
+                          </a>
+                    </div>
+                </div>
+                <!--end col-->
+                <div class="col-lg-3 col-auto">
+                    <div class="search-box">
+                        <input type="text" class="form-control search" id="searchInput" placeholder="Search for Governance and Ordinances">
+                        <i class="ri-search-line search-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+
+        <div class="row h-100">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-striped display" style="width:100%" id="userList">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Author</th>    
+                                    <th>File</th>
+                                    <th style="width: 20%;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordinanceTableBody">
+                                
+                            </tbody>
+                        </table>
+                        
+    <!-- Pagination buttons -->
+                    <div class="d-flex justify-content-center">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous" onclick="loadPreviousPage()">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <!-- You can dynamically generate page buttons here -->
+                                <!-- For example, if you have 5 pages, you can create 5 buttons -->
+                                <li class="page-item"><a class="page-link pagination-link" href="#" data-page="1">1</a></li>
+                                <li class="page-item"><a class="page-link pagination-link" href="#" data-page="2">2</a></li>
+                                <li class="page-item"><a class="page-link pagination-link" href="#" data-page="3">3</a></li>
+                                <li class="page-item"><a class="page-link pagination-link" href="#" data-page="4">4</a></li>
+                                <!-- Add more buttons as needed -->
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next" onclick="loadNextPage()">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    </div> <!-- end card-body-->
+                </div>
+            </div> <!-- end col-->
+        </div> <!-- end row-->
+    
+        <!-- Pagination -->
+    
+        <!-- Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-modal="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Governance and Ordinances</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="javascript:void(0);">
+                            <div class="row g-4">
+                                    <div class="col-xxl-3 col-md-6">
+                                        <div class="asterisk">
+                                            <label for="project_title" class="form-label1">Project Title<span>*</span></label>
+                                            <input type="form" class="form-control" id="project_title" placeholder="Project Title">
+                                        </div>
+                                    </div>
+                                    <!--end col-->
+                                    <div class="col-xxl-3 col-md-6">
+                                        <div class="asterisk">
+                                            <label for="Author" class="form-label1">Author<span>*</span></label>
+                                            <input type="form" class="form-control" id="Author" placeholder="Author" required>
+                                        </div>
+                                    </div>
+                                    <!--end col-->
+                                    <div class="col-xxl-3 col-md-6">
+                                        <div class="asterisk"> 
+                                            <label for="project_description" class="form-label1">Project Description <span></span></label>
+                                            <input type="form" class="form-control" id="project_description" placeholder="Project Description" required>
+                                        </div>
+                                    </div>
+                                    <!-- end col -->
+                                    <div class="col-xxl-3 col-md-6">
+                                        <div class="asterisk">
+                                            <label for="age" class="form-label1">File<span></span></label>
+                                            <input type="file" class="form-control" required>
+                                        </div>
+                                    </div>
+                                <div class="col-lg-12">
+                                    <div class="hstack gap-2 justify-content-end">
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div><!--end col-->
+                            </div><!--end row-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- end of modal edit -->
+    
+            
+                            <!-- Modal -->
+                            <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-modal="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="viewModalLabel">Governance and Ordinances</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="javascript:void(0);">
+                                                <div class="row g-4">
+                                                        <div class="col-xxl-3 col-md-6">
+                                                            <div class="asterisk">
+                                                                <label for="project_title" class="form-label1">Project Title</label>
+                                                              
+                                                            </div>
+                                                        </div>
+                                                           
+                                                    </div><!--end col-->
+                                                        <!--end col-->
+                                                        <div class="col-xxl-3 col-md-6">
+                                                            <div class="asterisk">
+                                                                <label for="Author" class="form-label1">Author</label>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="row g-4">
+                                                        <div class="col-xxl-3 col-md-6">
+                                                            <div class="asterisk"> 
+                                                                <label for="project_description" class="form-label1">Project Description <span></span></label>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        <!-- end col -->
+                                                        <div class="col-xxl-3 col-md-6">
+                                                            <div class="asterisk">
+                                                                <label for="age" class="form-label1">File<span></span></label>
+                                                                <input type="file" class="form-control" required>
+                                                            </div>
+                                                        </div>
+                                               
+                                                </div><!--end row-->
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end of modal view -->
+                            
+        </div>
+    </div>
+    </div>
+    <!-- container-fluid -->
+    
+    {% block css %}
+    <link href="{% static 'css/profiles.css' %}" rel="stylesheet" type="text/css" />
+    {% endblock %}
+    
+    {% block js %}
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" ></script>
+    <script>
+    $(document).ready(function () {
+        // Function to load ordinance data with pagination and search
+        function loadOrdinances(page = 1, searchTerm = "") {
+            $.ajax({
+                url: "https://bitbo-standard-dep-dd2462e5a0a8.herokuapp.com/ordinances/getp?page=" + page + "&limit=10&search=" + encodeURIComponent(searchTerm),
+                type: "GET",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem('token')
+                },
+                success: function (data) {
+                    // Clear existing data
+                    $("#ordinanceTableBody").empty();
+    
+                    // Check if ordinances data is available
+                    if (data.data.length > 0) {
+                        // Iterate through ordinances and append rows to the table
+                        $.each(data.data, function (index, ordinance) {
+                            var fileName = ordinance.file_path || 'No File';
+                            
+                            // Generate the hyperlink with onclick to open the file in a new tab
+                            var fileLink = ordinance.file_path ? '<a href="#" onclick="viewFile(\'' + ordinance.id + '\'); return false;">' + fileName + '</a>' : fileName;
+    
+                            var buttons = '<td>' +
+                                '<button class="btn btn-soft-secondary edit-btn" data-ordinanceid="' + ordinance.id + '" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalgrid"><a href="#" class="dropdown-item"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></button>' +
+                                '<button class="btn btn-soft-primary delete-btn" data-ordinanceid="' + ordinance.id + '" type="button" aria-expanded="false"><a href="#" class="dropdown-item" onclick="event.preventDefault();"><i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete</a></button>' +
+                                '</td>';
+    
+                            var row = '<tr>' +
+                                '<td>' + ordinance.title + '</td>' +
+                                '<td>' + ordinance.author + '</td>' +
+                                '<td>' + fileLink + '</td>' +
+                                buttons +
+                                '</tr>';
+    
+                            // Append the row to the table body
+                            $("#ordinanceTableBody").append(row);
+                        });
+                    } else {
+                        // Handle case when no ordinances are found
+                        $("#ordinanceTableBody").html('<tr><td colspan="5">No ordinances found</td></tr>');
+                    }
+                },
+                error: function () {
+                    // Handle error case
+                    console.error('Error fetching ordinances data.');
+                }
+            });
+        }
+    
+    
+    // Search input change event handler
+        $("#searchInput").on("input", function () {
+                var searchTerm = $(this).val();
+                loadOrdinances(1, searchTerm);
+           });
+           
+        // Function to open the file in a new tab
+        window.viewFile = function (id) {
+        var fileUrl = "https://bitbo-standard-dep-dd2462e5a0a8.herokuapp.com/ordinances/view_file/" + id;
+    
+        // Retrieve the token from localStorage
+        var token = localStorage.getItem('token');
+    
+        console.log('File URL:', fileUrl);
+        console.log('Token:', token);
+    
+        // Ensure the token is available
+        if (token) {
+            // Open the file in a new tab with the bearer token in the headers
+            var newWindow = window.open(fileUrl, '_blank');
+    
+            console.log('New Window:', newWindow);
+    
+            // Attach an event listener to the new window's load event
+            if (newWindow) {
+                newWindow.addEventListener('load', function () {
+                    // Inject the token into the new window's localStorage
+                    newWindow.localStorage.setItem('token', token);
+                    console.log('Token injected into new window localStorage.');
+                });
+            } else {
+                console.error('Failed to open new window.');
+            }
+        } else {
+            // Handle case where token is not available
+            console.error('Authentication token not found.');
+            // You might want to implement a fallback mechanism or notify the user
+        }
+    };
+    
+        // Initial load of ordinances data
+        loadOrdinances();
+    });
+    
+    // Function to dynamically generate pagination buttons
+        function generatePaginationButtons(totalPages) {
+         var paginationContainer = $(".pagination");
+         paginationContainer.empty();
+    
+        for (var i = 1; i <= totalPages; i++) {
+            var buttons = '<td>' +
+        '<button class="btn btn-soft-secondary edit-btn" data-ordinanceid="' + ordinance.id + '" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalgrid"><a href="#" class="dropdown-item"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></button>' +
+        '<button class="btn btn-soft-primary delete-btn" data-ordinanceid="' + ordinance.id + '" type="button" aria-expanded="false"><a href="#" class="dropdown-item" onclick="event.preventDefault();"><i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete</a></button>' +
+        '</td>';
+        paginationContainer.append(button);
+        }
+    }
+    
+            // Pagination click event handler
+            $(document).on("click", ".pagination-link", function (event) {
+                event.preventDefault();
+                var page = $(this).attr("data-page");
+                loadOrdinances(page);
+            });
+    
+            // Variable to store the current page
+            var currentPage = 1;
+    
+            // Function to load the next page
+            function loadNextPage() {
+                currentPage++;
+                loadOrdinances(currentPage);
+            }
+    
+            // Function to load the previous page
+            function loadPreviousPage() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    loadOrdinances(currentPage);
+                }
+            }
+                    
+        // DELETE MODAL POP UP ---------------------------------------------------------------
+                    $(document).on("click", ".delete-btn", function () {
+                        var ordinanceId = $(this).data("ordinanceid");
+                        // Display a confirmation prompt before proceeding with deletion
+                        if (confirm("Are you sure you want to delete this ordinance?")) {
+                            // User clicked OK in the confirmation prompt
+                            // Call the function to delete the ordinance with the given ID
+                            deleteOrdinance(ordinanceId);
+                        }
+                    });
+    
+                    // DELETE ORDINANCE
+                    function deleteOrdinance(ordinanceId) {
+                        $.ajax({
+                            url: "https://bitbo-standard-dep-dd2462e5a0a8.herokuapp.com/ordinances/" +ordinanceId,
+                            type: "DELETE",
+                            headers: {
+                                "Authorization": "Bearer " + localStorage.getItem('token')
+                            },
+                            success: function (data) {
+                                // Reload the ordinances after successful deletion
+                                loadOrdinances();
+                            },
+                            error: function () {
+                                // Handle error case
+                                console.error('Error deleting ordinance.');
+                            }
+                        });
+                    }
+    
+            // FOR EDIT MODAL Attach a click event handler to the edit buttons--------------------------------------
+            $(document).on("click", ".edit-btn", function () {
+                var ordinanceId = $(this).data("ordinanceid");
+    
+                // Set the ordinance ID to the modal data attribute
+                $('#editModal').data('ordinance-id',ordinanceId);
+    
+                // Call the function to get specific ordinance data by ID
+                getResident(ordinanceId);
+            });
+    
+    
+            // Function to get specific ordinance data by ID
+            function getResident(ordinanceId) {
+                console.log('Getting ordinance with ID:', ordinanceId);
+                $.ajax({
+                    url: "https://bitbo-standard-dep-dd2462e5a0a8.herokuapp.com/ordinances/" + ordinanceId,
+                    type: "GET",
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem('token')
+                    },
+                    success: function (data) {
+                        // Populate the form fields with the ordinance data
+                        populateFormWithData(data.data);
+    
+                        // Open the modal for editing
+                        $('#editModal').modal('show');
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        // Handle error case
+                        console.error('Error fetching ordinance data:', textStatus, errorThrown);
+                    }
+                });
+            }
+    
+            // Function to populate form fields with ordinance data
+            function populateFormWithData(ordinanceData) {
+                // Assuming you have form fields with corresponding IDs, update their values
+                $('#first_name').val(ordinanceData.first_name);
+                $('#middle_name').val(ordinanceData.middle_name);
+                $('#last_name').val(ordinanceData.last_name);
+                // Repeat this for other form fields
+            }
+    
+            // Attach a submit event handler to the form
+            $(document).on("submit", "form", function (event) {
+                // Prevent the default form submission
+                event.preventDefault();
+    
+    // Display a confirmation dialog
+    var isConfirmed = confirm("Are you sure you want to edit this ordinance?");
+    
+    // Check if the user confirmed the action
+    if (isConfirmed) {
+                // Get the ordinance ID from the form or any other source you have
+                var ordinancetId = getOrdinanceId(); // Implement the function to get the ordinance ID
+    
+                console.log('Ordinance ID:', ordinanceId); // Log the ordinanceId before making the request
+    
+                // Call the function to update ordinance data by ID
+                updateOrdinance(ordinanceId);
+    }
+            });
+    
+            // Function to update ordinance data by ID
+            function updateOrdinance(ordinanceId) {
+                var ordinanceData = getFormData();
+                console.log('Sending data to server:',ordinanceData);
+    
+                $.ajax({
+                    url: "https://bitbo-standard-dep-dd2462e5a0a8.herokuapp.com/ordinances/" + ordinanceId,
+                    type: "PUT",
+                    contentType: "application/json",
+                    data: JSON.stringify(ordinanceData),
+                    dataType: 'json',
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem('token')
+                    },
+                    success: function (data) {
+                        console.log("Resident updated successfully");
+                        // You might want to close the modal or perform other actions upon success
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.error('Error updating resident data:', textStatus, errorThrown);
+                    }
+                });
+            }
+    
+            // Function to gather form data into an object
+            function getFormData() {
+                // Create an object to store form data
+                var ordinanceData = {
+                    first_name: $('#first_name').val(),
+                    middle_name: $('#middle_name').val(),
+                    last_name: $('#last_name').val(),
+                    // Add other form fields here
+                };
+    
+                // Return the object
+                return ordinanceData;
+            }
+    
+            // Function to get the ordinance ID (you need to implement this based on your application logic)
+            function getOrdinanceId() {
+                // Implement the logic to retrieve the ordinance ID
+                // For example, if you have stored the ordinance ID in a data attribute of the form:
+                return $('#editModal').data('ordinance-id');
+            }
+    ;
+    
+     // VIEW MODAL----------------------------------------------------------------------------------
+    // Attach a click event handler to the view button
+    $(document).on("click", ".view-btn", function () {
+        var ordinanceId = $(this).data("ordinanceid");
+    
+        // Call the function to get specific ordinance data by ID
+        getOrdinanceForView(ordinanceId);
+    });
+    
+    // Function to get specific ordinance data by ID for the view modal
+    function getOrdinanceForView(ordinanceId) {
+        console.log('Getting ordinance with ID for view:', ordinanceId);
+        $.ajax({
+            url: "https://bitbo-standard-dep-dd2462e5a0a8.herokuapp.com/ordinances/" + ordinanceId,
+            type: "GET",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('token')
+            },
+            success: function (data) {
+                // Populate the "Name" text in the view modal with resident data
+                updateViewModalName(data.data);
+                // Open the view modal
+                $('#viewModal').modal('show');
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                // Handle error case
+                console.error('Error fetching ordinance data for view:', textStatus, errorThrown);
+                        }
+                    });
+                }
+            
+    // Function to update "Name" text in the view modal
+    function updateViewModalName(ordinanceData) {
+        // Assuming you have an element with an ID for "Name" text in the view modal
+        $('#viewModalName').text(ordinanceData.title + ' ' + ordinanceData.author + ' ' + ordinanceData.description  + ' ' + ordinanceData.file);
+        // You might want to add additional information here if needed
+    }
+    
+    //SECURITY--------------
+       // Check for the token when the page loads
+       document.addEventListener("DOMContentLoaded", function() {
+             var token = localStorage.getItem('token');
+             if (token) {
+                 // Show the services content if the token is present
+                 document.getElementById('whole-content').style.display = 'block';
+             } else {
+                 // Redirect to login if token is not present
+                 window.location.href = "/login";  // Adjust the login page URL if necessary
+             }
+         });
+        
+    </script>
+    
+    
+    
+    
+    
+    {% endblock %}
+    {% endblock %}

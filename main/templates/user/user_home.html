@@ -1,0 +1,176 @@
+{% extends 'user/user_index.html' %}
+{% load static %}
+{% block content %}
+  
+      <!-- Begin page -->
+         <!-- start hero section -->
+         <section class="section pb-0 hero-section" id="hero">
+            <div class="bg-overlay bg-overlay-pattern"></div>
+            <div class="margin">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-sm-10">
+                        <div class="text-center mt-lg-5 pt-5">
+                            <h1 class="display-6 fw-semibold mb-3 lh-base">Welcome to <span class="text-secondary">BITBO STANDARD! </span></h1>
+                            <p class="lead text-muted lh-base">"Bringing Change to Local Government" Together, we can build a brighter future for all. Explore Bitbo Today and be part of the change!</p>
+
+                            <div class="d-flex gap-2 justify-content-center mt-4">
+                                <a href="{% url 'user_clearance' %}" class="btn btn-primary">Clearances and Permits<i class="ri-arrow-right-line align-middle ms-1"></i></a>
+                                <!-- <a href="pages-pricing.html" class="btn btn-danger">View Plans <i class="ri-eye-line align-middle ms-1"></i></a> -->
+                            </div>
+                        </div>
+
+                        <div class="mt-1 mt-sm-3 pt-sm-3 mb-sm-n3 demo-carousel">
+                            <div class="demo-img-patten-top d-none d-sm-block">
+                                <img src="{% static 'img/landing/img-pattern.png' %}" class="d-block img-fluid" alt="...">
+                            </div>
+                         
+                            <!-- With Controls -->
+                                <div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="carousel-item active" data-bs-interval="2000">
+                                            <img class="d-block img-fluid mx-auto" src="{% static 'img/users/6.png' %}" alt="First slide">
+                                        </div>
+                                        <div class="carousel-item" data-bs-interval="2000">
+                                            <img class="d-block img-fluid mx-auto" src="{% static 'img/users/4.png' %}" alt="Second slide">
+                                        </div>
+                                        <div class="carousel-item" data-bs-interval="2000">
+                                            <img class="d-block img-fluid mx-auto" src="{% static 'img/users/5.png' %}" alt="Third slide">
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                    
+                                </div>
+                            <div class="link">
+                                <a href="{% url 'user_officials' %}" class="fs-13 fw-medium "><br>See All <i class="ri-arrow-right-s-line align-bottom"></i></a>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+            <div class="position-absolute start-0 end-0 bottom-0 hero-shape-svg">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1440 120">
+                    <g mask="url(&quot;#SvgjsMask1003&quot;)" fill="none">
+                        <path d="M 0,118 C 288,98.6 1152,40.4 1440,21L1440 140L0 140z">
+                        </path>
+                    </g>
+                </svg>
+            </div>
+            <!-- end shape -->
+        </section>
+        <!-- end hero section -->
+        <!-- start services -->
+        <section class="section" id="services">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="text-center mb-5">
+                            <h1 class="mb-3 ff-secondary fw-semibold lh-base">View Pages</h1>
+                            <p class="text-muted">As you navigate through the various sections, you can access detailed information once you clicked see all!</p>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            <div class="pages-left">
+                <div class="row g-3">
+                    <div class="col-lg-4">
+                        <div class="d-flex p-3">
+                            <div class="me-3">
+                                <div class="avatar-sm icon-effect">
+                                    <div class="avatar-title bg-transparent text-success rounded-circle">
+                                        <i class="ri-home-line fs-36"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="fs-18">Governance and Ordinances</h5>
+                                <p class="text-muted my-3 ff-secondary">Barangay Ordinances Archives local ordinances and resolutions passed by the barangay council.</p>
+                                <div>
+                                    <a href="{% url 'user_governance' %}" class="fs-13 fw-medium mt-4">See All <i class="ri-arrow-right-s-line align-bottom"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                    <div class="col-lg-4">
+                        <div class="d-flex p-3">
+                            <div class=" me-3">
+                                <div class="avatar-sm icon-effect">
+                                    <div class="avatar-title bg-transparent text-success rounded-circle">
+                                        <i class="ri-folder-settings-line fs-36"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div >
+                                <h5 class="fs-18">Projects and Programs</h5>
+                                <p class="text-muted my-3 ff-secondary">Records information about social welfare programs,  and assistance provided to residents in need.</p>
+                                <div>
+                                    <a href="{% url 'user_proj_prog' %}" class="fs-13 fw-medium">See All <i class="ri-arrow-right-s-line align-bottom"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                   
+                    </div>
+                    <!-- end col -->
+                    </div> 
+                    <!-- end of pages-left -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- end services -->
+
+   
+    
+
+{% block css %}
+
+<link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+
+<!--Swiper slider css-->
+<link href="{% static 'libs/swiper/swiper-bundle.min.css ' %}" rel="stylesheet" type="text/css" />
+
+<!-- Layout config Js -->
+<script src="{% static 'js/layout.js' %}"></script>
+<!-- Bootstrap Css -->
+<link href="{% static 'css/bootstrap.min.css ' %}" rel="stylesheet" type="text/css" />
+<!-- Icons Css -->
+<link href="{% static 'css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+<!-- App Css-->
+<link href="{% static 'css/app.min.css' %}" rel="stylesheet" type="text/css" />
+<!-- custom Css-->
+<link href="{% static 'css/custom.min.css' %}" rel="stylesheet" type="text/css" />
+    
+<link href="{% static 'css/user_home.css' %}" rel="stylesheet" />
+
+ {% endblock %}
+
+ {% block js %}
+ <!-- JAVASCRIPT -->
+ <script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+ <script src="{% static 'libs/simplebar/simplebar.min.js' %}"></script>
+ <script src="{% static 'libs/node-waves/waves.min.js' %}"></script>
+ <script src="{% static 'libs/feather-icons/feather.min.js' %}"></script>
+ <script src="{% static 'js/pages/plugins/lord-icon-2.1.0.js' %}"></script>
+ <script src="{% static 'js/plugins.js' %}"></script>
+
+ <!--Swiper slider js-->
+ <script src="{% static 'libs/swiper/swiper-bundle.min.js' %}"></script>
+
+ <!-- landing init -->
+ <script src="{% static 'js/pages/landing.init.js' %}"></script>
+
+ {% endblock %}
+ {% endblock %}

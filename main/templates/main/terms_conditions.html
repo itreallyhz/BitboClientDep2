@@ -1,0 +1,141 @@
+{% extends 'main/index.html' %}
+{% load static %}
+{% block content %}
+<script>
+    // Check for the token when the page loads
+    document.addEventListener("DOMContentLoaded", function() {
+         var token = localStorage.getItem('token');
+         if (!token) {
+             // Redirect to login if token is not present
+             window.location.href = "/login";  
+         }
+     });
+</script>
+
+        <div class="square">
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="card">
+                                <div class="bg-info position-relative">
+                                    <div class="card-body p-5">
+                                        <div class="text-center">
+                                            <h3 class="fw-semibold text-color">Terms & Condition</h3>
+                                            <p class="mb-0">Bitbo</p>
+                                        </div>
+                                    </div>
+                                    <div class="shape">
+                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1440" height="60" preserveAspectRatio="none" viewBox="0 0 1440 60">
+                                            <g mask="url(&quot;#SvgjsMask1001&quot;)" fill="none">
+                                                <path d="M 0,4 C 144,13 432,48 720,49 C 1008,50 1296,17 1440,9L1440 60L0 60z" style="fill: lightblue;"></path>
+                                            </g>
+                                            <defs>
+                                                <mask id="SvgjsMask1001">
+                                                    <rect width="1440" height="60" fill="#ffffff"></rect>
+                                                </mask>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 me-3">
+                                            <i data-feather="check-circle" class="text-success icon-dual-success icon-xs"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h5 class="fw-semibold">Acceptance of Terms</h5>
+                                            <p class="text-muted">By accessing and using the Barangay System Record Management, you agree to comply with and be bound by these terms and conditions.</p>
+                                            <p class="text-muted">If you do not agree with any part of these terms, you should not use the system.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 me-3">
+                                            <i data-feather="check-circle" class="text-success icon-dual-success icon-xs"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h5 class="fw-semibold">Privacy and Security</h5>
+                                            <ul class="text-muted vstack gap-2">
+                                                <li>
+                                                    Bitbo takes privacy seriously. Personal information provided will be handled in accordance with applicable privacy laws.
+                                                </li>
+                                                <li>
+                                                    Users are responsible for maintaining the confidentiality of their login credentials and ensuring the security of their account.
+                                                </li>
+                                            </ul>
+                                            <h5 class="fw-semibold">Authorized Use</h5>
+                                            <ul class="text-muted vstack gap-2">
+                                                <li>
+                                                    Bitbo is intended for official and authorized use only.
+                                                </li>
+                                                <li>
+                                                    Unauthorized access, use, or modification of the system, data, or functionalities is strictly prohibited.
+                                                </li>
+                                            </ul>
+                                            <h5 class="fw-semibold">Accuracy of Information</h5>
+                                            <ul class="text-muted vstack gap-2">
+                                                <li>
+                                                    Users are responsible for the accuracy of the information they provide and update in the system.
+                                                </li>
+                                                <li>
+                                                    Bitbo administrators reserve the right to verify and correct information if inaccuracies are identified.
+                                                </li>
+                                            </ul>
+                                            <h5 class="fw-semibold">System Integrity</h5>
+                                            <ul class="text-muted vstack gap-2">
+                                                <li>
+                                                    Users shall not attempt to interfere with the proper functioning of Bitbo or attempt to access data beyond their authorized access level.
+                                                </li>
+                                                <li>
+                                                    Any attempt to compromise the integrity of the system may result in legal action.
+                                                </li>
+                                            </ul>
+                                            <p class="text-muted">Access to Bitbo may be terminated or suspended for users who violate these terms and conditions or engage in unauthorized activities.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 me-3">
+                                            <i data-feather="check-circle" class="text-success icon-dual-success icon-xs"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <p class="text-muted"><b>By using the Bitbo, you acknowledge that you have read, understood, and agree to these terms and conditions.</b></p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- container-fluid -->
+            </div>
+
+{% block css %}
+<!-- App favicon -->
+<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+<!-- Layout config Js -->
+<script src="{% static 'js/layout.js' %}"></script>
+<!-- Bootstrap Css -->
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+<!-- Icons Css -->
+<link href="{% static 'css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+<!-- App Css-->
+<link href="{% static 'css/app.min.css' %}" rel="stylesheet" type="text/css" />
+<!-- custom Css-->
+<link href="{% static 'css/custom.min.css' %}" rel="stylesheet" type="text/css" />
+
+
+<link href="{% static 'css/terms_conditions.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'css/privacy_policy.css' %}" rel="stylesheet" type="text/css" />
+
+
+{% endblock %}
+
+{% block js %}
+                
+{% endblock %}
+
+
+{% endblock %}

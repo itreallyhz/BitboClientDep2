@@ -1,0 +1,645 @@
+{% extends 'main/index.html' %}
+{% load static %}
+<script>
+    // Check for the token when the page loads
+    document.addEventListener("DOMContentLoaded", function() {
+         var token = localStorage.getItem('token');
+         if (!token) {
+             // Redirect to login if token is not present
+             window.location.href = "/login";  
+         }
+     });
+
+     $(document).ready(function() {
+        $('#userList').DataTable();
+    });
+</script>
+{% block content %}
+
+<div class="square">
+    <div class="container-fluid">
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0">Project and Programs</h4>
+
+                    <div class="page-title-right">
+                        <!-- <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="{% url 'add_incident' %}"><strong>Add Incident</strong> </a></li>
+                            <li class="breadcrumb-item active">Incident and Case Management</li>
+                        </ol> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row g-2">
+                    <div class="col-lg-auto">
+                        <div class="hstack gap-2">
+                            <a href="{% url 'view_proj' %}" class="btn btn-primary">
+                                <i class="ri-add-line align-bottom me-1"></i> Add Project and Programs
+                              </a>
+                              
+                        </div>
+                    </div>
+                    <!--end col-->
+                    <div class="col-lg-3 col-auto">
+                        <div class="search-box">
+                            <input type="text" class="form-control search" id="searchInput" placeholder="Search for Project and Programs...">
+                            <i class="ri-search-line search-icon"></i>
+                        </div>
+                    </div>
+                   
+                </div>
+                <!--end row-->
+            </div>
+            <!--end card-body-->
+        </div>
+        <!--end card-->
+
+
+        <div class="row h-100">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <h5 class="card-title mb-0 flex-grow-1">Project and Programs Table</h5>
+                    </div>
+                    <div class="card-body">
+
+                        <table id="" class="table table-striped display" >
+                            <thead>
+                                <tr>
+                                    <th >Project Title</th>
+                                    <th >Project Type</th>
+                                    <th >Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                           
+                                <tbody id="residentTableBody">
+                                    <!--  Pagination Body called in JS (line 892)-->
+                                </tbody>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDIT MODAL -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-modal="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="javascript:void(0);">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                        <div class="asterisk">
+                                            <label class="form-label" for="project-title-input">Project Title <span>*</span></label>
+                                         <input type="form" class="form-control" id="title" placeholder="Enter project title">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="asterisk">
+                                        <label for="choices-status-input" class="form-label">Project Type<span> *</span></label>
+                                        <select class="form-select" data-choices data-choices-search-false id="projType">
+                                            <option value="Medical Mission">Medical Mission</option>
+                                            <option value="Feeding Program">Feeding Program</option>
+                                            <option value="Community Service">Community Service</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <!-- <div class="asterisk">
+                                    <label class="form-label" for="project-thumbnail-img">Thumbnail Image <span>*</span></label>
+                                    <input class="form-control" id="project-thumbnail-img" type="file" accept="image/png, image/gif, image/jpeg">
+                                </div> -->
+                            </div>
+                            </div>
+
+                                <div class="mb-3">
+                                    <div class="asterisk">
+                                <label class="form-label" for="des-info-description-input"><br>Project Description<span> *</span></label>
+                               <textarea class="form-control" placeholder="Enter Description" id="description" rows="6"></textarea>
+                              </div>
+                            </div>
+
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="mb-3 mb-lg-0">
+                                            <div class="asterisk">
+                                            <label for="choices-status-input" class="form-label">Status<span> *</span></label>
+                                            <select class="form-select" data-choices data-choices-search-false id="status">
+                                                <option value="Inprogress" selected>In progress</option>
+                                                <option value="Completed">Completed</option>
+                                            </select>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="asterisk">
+                                            <label for="datepicker-deadline-input" class="form-label">Duration<span> *</span></label>
+                                            <input type="text" class="form-control" id="duration" placeholder="Enter duration" data-provider="flatpickr">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="asterisk">
+                                            <label for="datepicker-deadline-input" class="form-label">Date Started<span> *</span></label>
+                                            <input type="text" class="form-control" id="started" placeholder="Enter date started" data-provider="flatpickr">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <!-- <div class="asterisk">
+                                            <label class="form-label"><br>Name of Project<span> *</span></label>
+                                            <input type="text" class="form-control" id="project-title-input" placeholder="Enter project title">
+                                    </div> -->
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="asterisk">
+                                            <label class="form-label"><br>Budget<span> *</span></label>
+                                            <input type="text" class="form-control" id="budget" placeholder="Enter Budget">
+                                    </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="asterisk">
+                                            <label class="form-label"><br>Source of Funds<span> *</span></label>
+                                            <input type="text" class="form-control" id="source" placeholder="Enter Source of Funds">
+                                </div>
+                                </div>
+                            </div>
+                            <div class="save-button">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <!-- <button type="button" class="btn btn-success waves-effect waves-light save-button" onclick="confirmSave()">Save</button> -->
+                                </div>
+                            </form>
+                            <!-- end card body -->
+                         </div>
+                            
+                 </div>
+    <!-- container-fluid -->
+                </div>
+<!-- End Modal BOdy -->
+
+</div>
+</div>
+</div>
+
+    <!-- VIEW MODAL -->
+
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-modal="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>View Project and Programs</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                        <label class="form-label" for="project-title-input">Project Title: <span id="title"></span> </label>
+                            </div>
+                            <div class="col-lg-8">
+                                    <!-- display data <input type="text" class="form-control" id="project-title-input" placeholder="Enter project title"> -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                            <label for="choices-status-input" class="form-label"><br>Project Type</label>
+                        </div>
+                        <div class="col-lg-8">
+                            <!-- display data <input type="text" class="form-control" id="project-title-input" placeholder="Enter project title"> -->
+                    </div>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col-lg-4">
+                                <label class="form-label" for="project-thumbnail-img"><br>Thumbnail Image </label>
+                            </div>
+                            <div class="col-lg-8">
+                                 <input class="form-control" id="project-thumbnail-img" type="file" accept="image/png, image/gif, image/jpeg"> 
+                                </div>
+                        </div> -->
+                        <div class="row">
+                            <div class="mb-3">
+                            <label class="form-label" for="des-info-description-input"><br>Project Description</label>
+                          </div>
+                          <div class="col-lg-8">
+                            <!-- <textarea class="form-control" placeholder="Enter Description" id="des-info-description-input" rows="6" required></textarea> -->
+                        </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mb-3 mb-lg-0">
+                                        <label for="choices-status-input" class="form-label"><br>Status</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <!-- <select class="form-select" data-choices data-choices-search-false id="choices-status-input">
+                                        <option value="Inprogress" selected>In progress</option>
+                                        <option value="Completed">Completed</option>
+                                    </select> DISPLAY OF DATA -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                        <label for="datepicker-deadline-input" class="form-label"><br>Duration</label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <!-- <input type="text" class="form-control" id="datepicker-deadline-input" placeholder="Enter duration" data-provider="flatpickr"> -->
+                
+                                </div>
+                            </div>
+                    <div class="row">
+                    <div class="col-lg-4">
+                            <label for="datepicker-deadline-input" class="form-label"><br>Date Started</label>
+                            </div>
+                            <div class="col-lg-8">
+                            <!-- <input type="text" class="form-control" id="datepicker-deadline-input" placeholder="Enter date started" data-provider="flatpickr"> -->
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                            <label class="form-label"><br>Name of Project</label>
+                            </div>
+                            <div class="col-lg-8">
+                            <!-- <input type="text" class="form-control" id="project-title-input" placeholder="Enter project title"> -->
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-lg-4">
+                            <label class="form-label"><br>Budget</label>
+                            </div>
+                            <div class="col-lg-8">
+                            <!-- <input type="text" class="form-control" id="author-input" placeholder="Enter Budget"> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                            <label class="form-label"><br>Source of Funds</label>
+                            </div>
+                        <div class="col-lg-8">
+                            <!-- <input type="text" class="form-control" id="author-input" placeholder="Enter Source of Funds"> -->
+                </div>
+                </div>
+                <div class="row">
+                 <div class="col-lg-4">
+                    <label for="datepicker-deadline-input" class="form-label"><br>Date Started</label>
+                                    </div>
+                    <div class="col-lg-8">
+                        <!-- <display -->
+                            </div>
+                        </div>
+                            
+                        </div>
+                        <!-- end card body -->
+                    </div>
+                    </div>
+                    <!-- container-fluid -->
+                    </div>
+                    <!-- End Modal BOdy -->
+
+
+{% block css %}
+<link href="{% static 'css/proj_prog.css' %}" rel="stylesheet" type="text/css" />
+
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+    $(document).ready(function () {
+        // Function to load resident data with pagination
+        function loadProjects(page = 1, searchTerm = '') {
+            $.ajax({
+                url: "https://bitbo-standard-dep-dd2462e5a0a8.herokuapp.com/projects/getp?page=" + page + "&limit=10" + page + "&limit=10" + "&search=" + searchTerm,
+                type: "GET",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem('token')
+                },
+                success: function (data) {
+                    // Clear existing data
+                    $("#residentTableBody").empty();
+
+                    // Check if residents data is available
+                    if (data.data.length > 0) {
+                        // Iterate through residents and append rows to the table
+                        $.each(data.data, function (index, project) {
+                            var row = '<tr>' +
+                                '<td>' + project.title + '</td>' + 
+                                '<td>' + project.projType + '</td>' +
+                                '<td>' + project.started + '</td>' +
+                                '<td>' +  project.status + '</td>' +
+                                '<td>' +
+                                '<button class="btn btn-soft-secondary edit-btn" data-projectid="' + project.id + '" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalgrid">' +
+                                '<a href="#" class="dropdown-item"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a>' +
+                                '</button>' +
+                                '<button class="btn btn-soft-success" data-projectid="' + project.id + ' " type="button" data-bs-toggle="modal" aria-expanded="false" data-bs-target="#viewModal">' +
+                                '<a href="#" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a>' +
+                                '</button>' +
+                                '<button class="btn btn-soft-primary delete-btn" data-projectid="' + project.id + '" type="button" aria-expanded="false">' +
+                                '<a href="#" class="dropdown-item" onclick="event.preventDefault();"><i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete</a>' +
+                                '</button>' +
+                                '</td>' +
+                                '</tr>';
+
+                            // Append the row to the table body
+                            $("#residentTableBody").append(row);
+                        });
+                    } else {
+                        // Handle case when no residents are found
+                        $("#residentTableBody").html('<tr><td colspan="5">No residents found</td></tr>');
+                    }
+                },
+                error: function () {
+                    // Handle error case
+                    console.error('Error fetching residents data.');
+                }
+            });
+        }
+
+        // Search input change event handler
+    $("#searchInput").on("input", function () {
+            var searchTerm = $(this).val();
+            loadProjects(1, searchTerm);
+       });
+
+        // Initial load of residents data
+        loadProjects();
+
+        // Pagination click event handler
+        $(document).on("click", ".pagination-link", function (event) {
+            event.preventDefault();
+            var page = $(this).attr("data-page");
+            loadProjects(page);
+        });
+
+        // Variable to store the current page
+        var currentPage = 1;
+
+        // Function to load the next page
+        function loadNextPage() {
+            currentPage++;
+            loadProjects(currentPage);
+        }
+
+        // Function to load the previous page
+        function loadPreviousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                loadProjects(currentPage);
+            }
+        }
+                // Attach a click event handler to the delete buttons
+                $(document).on("click", ".delete-btn", function () {
+                    var projectId = $(this).data("projectid");
+                    // Display a confirmation prompt before proceeding with deletion
+                    if (confirm("Are you sure you want to delete this project?")) {
+                        // User clicked OK in the confirmation prompt
+                        // Call the function to delete the resident with the given ID
+                        deleteProject(projectId);
+                    }
+                });
+
+                // Function to delete a resident by ID
+                function deleteProject(projectId) {
+                    $.ajax({
+                        url: "https://bitbo-standard-dep-dd2462e5a0a8.herokuapp.com/projects/" + projectId,
+                        type: "DELETE",
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.getItem('token')
+                        },
+                        success: function (data) {
+                            // Reload the residents after successful deletion
+                            loadProjects();
+                        },
+                        error: function () {
+                            // Handle error case
+                            console.error('Error deleting project.');
+                        }
+                    });
+                }
+
+        // FOR EDIT MODAL Attach a click event handler to the edit buttons--------------------------------------
+        $(document).on("click", ".edit-btn", function () {
+            var projectId = $(this).data("projectid");
+
+            // Set the resident ID to the modal data attribute
+            $('#editModal').data('project-id', projectId);
+
+            // Call the function to get specific resident data by ID
+            getProject(projectId);
+        });
+
+
+
+        
+        // Function to get specific resident data by ID
+        function getProject(projectId) {
+            console.log('Getting project with ID:', projectId);
+            $.ajax({
+                url: "https://bitbo-standard-dep-dd2462e5a0a8.herokuapp.com/projects/" + projectId,
+                type: "GET",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem('token')
+                },
+                success: function (data) {
+                    // Populate the form fields with the resident data
+                    populateFormWithData(data.data);
+
+                    // Open the modal for editing
+                    $('#editModal').modal('show');
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    // Handle error case
+                    console.error('Error fetching resident data:', textStatus, errorThrown);
+                }
+            });
+        }
+
+        // Function to populate form fields with resident data
+        function populateFormWithData(projectData) {
+            // Assuming you have form fields with corresponding IDs, update their values
+            $('#title').val(projectData.title);
+            $('#projType').val(projectData.projType);
+            $('#description').val(projectData.description);
+            $('#status').val(projectData.status);
+            $('#budget').val(projectData.budget);
+            $('#source').val(projectData.source);
+            $('#duration').val(projectData.duration);
+            $('#started').val(projectData.started);
+            // Repeat this for other form fields
+        }
+
+        // // Attach a submit event handler to the form
+        // $(document).on("submit", "form", function (event) {
+        //     // Prevent the default form submission
+        //     event.preventDefault();
+
+        //     // Get the resident ID from the form or any other source you have
+        //     var projectId = getProjectId(); // Implement the function to get the resident ID
+
+        //     console.log('Project ID:', projectId); // Log the residentId before making the request
+
+        //     // Call the function to update resident data by ID
+        //     updateProject(projectId);
+        // });
+
+
+         // Attach a submit event handler to the form
+         $(document).on("submit", "form", function (event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+// Display a confirmation dialog
+        var isConfirmed = confirm("Are you sure you want to edit this resident?");
+
+// Check if the user confirmed the action
+        if (isConfirmed) {
+            // Get the resident ID from the form or any other source you have
+            var projectId = getProjectId(); // Implement the function to get the resident ID
+
+            console.log('Project ID:', projectId); // Log the residentId before making the request
+
+            // Call the function to update resident data by ID
+            updateProject(projectId);
+}
+        });
+
+
+
+
+        // Function to update resident data by ID
+        function updateProject(projectId) {
+            var projectData = getFormData();
+            console.log('Sending data to server:', projectData);
+
+            $.ajax({
+                url: "https://bitbo-standard-dep-dd2462e5a0a8.herokuapp.com/projects/" + projectId,
+                type: "PUT",
+                contentType: "application/json",
+                data: JSON.stringify(projectData),
+                dataType: 'json',
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem('token')
+                },
+                success: function (data) {
+                    console.log("Project updated successfully");
+                    // You might want to close the modal or perform other actions upon success
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.error('Error updating proejct data:', textStatus, errorThrown);
+                }
+            });
+        }
+
+        // Function to gather form data into an object
+        function getFormData() {
+            // Create an object to store form data
+            var projectData = {
+                title: $('#title').val(),
+                projType: $('#projType').val(),
+                description: $('#description').val(),
+                status: $('#status').val(),
+                started: $('#started').val(),
+                duration: $('#duration').val(),
+                budget: $('#budget').val(),
+                source: $('#source').val()
+                // Add other form fields here
+            };
+
+            // Return the object
+            return projectData;
+        }
+
+        // Function to get the resident ID (you need to implement this based on your application logic)
+        function getProjectId() {
+            // Implement the logic to retrieve the resident ID
+            // For example, if you have stored the resident ID in a data attribute of the form:
+            return $('#editModal').data('project-id');
+        }
+    });
+
+ 
+//Search engine optimization
+$(document).ready(function() {
+        // Setup - add a text input to each footer cell
+        $('#userList thead tr').clone(true).addClass('filters').appendTo( '#userList thead' );
+        var table = $('#userList').DataTable( {
+            orderCellsTop: true,
+            fixedHeader: true,
+            dom: 'lrtip', // Exclude the search filter ('f')
+            initComplete: function() {
+                var api = this.api();
+                // For each column
+                api.columns().eq(0).each(function(colIdx) {
+                    // Exclude input filter for the last column
+                    if (colIdx < api.columns().eq(0).length - 1) {
+                        // Set the header cell to contain the input element
+                        var cell = $('.filters th').eq($(api.column(colIdx).header()).index());
+                        var title = $(cell).text();
+                        $(cell).html( '<input type="text" placeholder="'+title+'" />' );
+                        // On every keypress in this input
+                        $('input', $('.filters th').eq($(api.column(colIdx).header()).index()) )
+                            .off('keyup change')
+                            .on('keyup change', function (e) {
+                                e.stopPropagation();
+                                // Get the search value
+                                $(this).attr('title', $(this).val());
+                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
+                                var cursorPosition = this.selectionStart;
+                                // Search the column for that value
+                                api
+                                    .column(colIdx)
+                                    .search((this.value != "") ? regexr.replace('{search}', '((('+this.value+')))') : "", this.value != "", this.value == "")
+                                    .draw();
+                                $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
+                            });
+                    } else {
+                        // Remove filter input for the last column
+                        var cell = $('.filters th').eq($(api.column(colIdx).header()).index());
+                        $(cell).html('');
+                    }
+                });
+            }
+        } );
+    } );
+</script>
+
+<script>
+    function confirmDelete() {
+      // Display a confirmation dialog
+      var confirmation = confirm("Are you sure you want to delete?");
+
+      // If the user clicks OK, submit the form
+      if (confirmation) {
+        document.getElementById("deleteForm").submit();
+      }
+      // If the user clicks Cancel, do nothing
+    }
+    function confirmSave() {
+      // Display a confirmation dialog
+      var confirmation = confirm("Are you sure you want to save?");
+
+      // If the user clicks OK, submit the form
+      if (confirmation) {
+        document.getElementById("saveForm").submit();
+      }
+      // If the user clicks Cancel, do nothing
+    }
+ 
+</script>
+
+{% endblock %}
+{% endblock %}

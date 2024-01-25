@@ -1,0 +1,137 @@
+
+
+{% load static %}
+   <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+   <link href="{% static 'libs/jsvectormap/css/jsvectormap.min.css' %}" rel="stylesheet" type="text/css" />
+
+   <!-- Layout config Js -->
+   <script src="{% static 'js/layout.js' %}"></script>
+   <!-- Bootstrap Css -->
+   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+   <!-- Icons Css -->
+   <link href="{% static 'css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+   <!-- App Css-->
+   <link href="{% static 'css/app.min.css' %}" rel="stylesheet" type="text/css" />
+   <!-- custom Css-->
+   <link href="{% static 'css/custom.min.css' %}" rel="stylesheet" type="text/css" />
+<body>
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+   <div class="space">
+        <div class="square">
+         <div class="container-fluid">
+                    <div class="row justify-content-start" >
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header align-items-center d-flex justify-content-between">
+                                    <h4 class="mb-sm-0">Barangay Account Registration Form</h4>
+                                </div>
+                                <!-- end card header -->
+                                <div class="card-body">
+                                    <div class="live-preview">
+                                        <div class="row gy-2">
+                                            <div class="col-xxl-6 col-md-12">
+                                                <div class="asterisk">
+                                                    <label for="Name" class="form-label"> Name <span>*</span></label>
+                                                    <input type="form" class="form-control" id="Name" placeholder="Name">
+                                                </div>
+                                            </div>
+                                            <!--email-->
+                                            <div class="col-xxl-6 col-md-12">
+                                                <div class="asterisk">
+                                                    <label for="email" class="form-label">Email <span>*</span></label>
+                                                    <div class="form-icon right">
+                                                        <input type="email" class="form-control form-control-icon" id="email" placeholder="example@gmail.com" required>
+                                                        <i class="ri-mail-unread-line"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- username -->
+                                            <div class="col-xxl-6 col-md-12">
+                                                <div class="asterisk">
+                                                    <label for="username" class="form-label">Username<span>*</span></label>
+                                                    <input type="text" class="form-control" id="username" value="" placeholder="Username" required>
+                                                </div>
+                                            </div>
+                                            <!-- password -->
+                                            <div class="col-xxl-6 col-md-12">
+                                                <div class="asterisk">
+                                                    <label for="password" class="form-label">Password<span>*</span></label>
+                                                    <input type="password" class="form-control" id="password" value="" placeholder="Password" required>
+                                                </div>
+                                            </div>
+                                                <!-- confirm password -->
+                                                <div class="col-xxl-6 col-md-12">
+                                                    <div class="asterisk">
+                                                        <label for="password" class="form-label">Confirm Password<span>*</span></label>
+                                                        <input type="password" class="form-control" id="password" value="" placeholder="Confirm Password" required>
+                                                    </div>
+                                                </div>
+                                        
+                                               <!-- start of buttons -->
+                                                <div class="card-body">
+                                                    <div class="live-preview">
+                                                        <div class="button-container">
+                                                            <!-- cancel button with modals -->
+                                                    
+                                                            <button class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">Cancel</button>
+                                                            <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-body text-center p-5">
+                                                                            <div class="mt-4">
+                                                                                <h4 class="mb-3">Are you sure you want to cancel?</h4>
+                                                                                <div class="hstack gap-2 justify-content-center">
+                                                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">No</button>
+                                                                                    <a href="{% url 'user_login' %}" class="btn btn-danger">Yes</a>
+                                                                                </div>
+                                                                                
+                                                                            </div>
+                                                                        </div>
+                                                                    </div><!-- /.modal-content -->
+                                                                </div><!-- /.modal-dialog -->
+                                                            </div><!-- /.modal -->
+                                                        <div class="submit-button">
+                                                            <button type="button" class="btn btn-success waves-effect waves-light"   onclick="window.location.href='/signup2/'">Next</button>
+                                                
+                                                                           
+                                                                 </div><!-- end save button -->
+                                                            </div><!-- end button container -->
+                                                        </div><!-- end live preview -->
+                                                    </div><!-- end card body (Start button) -->
+                                                
+                                            </div><!--card-body start personal info--> 
+                                        </div><!--card personal info--> 
+                                     </div><!--col lg personal info-->
+                                </div><!-- row personal info -->
+                            </div><!-- end container fluid -->
+                        </div><!--end of square-->
+                    </div>
+                                                                                    
+                                            
+    <!-- JAVASCRIPT -->
+    <script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'libs/simplebar/simplebar.min.js' %}"></script>
+    <script src="{% static 'libs/node-waves/waves.min.js' %}"></script>
+    <script src="{% static 'libs/feather-icons/feather.min.js' %}"></script>
+    <script src="{% static 'js/pages/plugins/lord-icon-2.1.0.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+
+    <!-- prismjs plugin -->
+    <script src="{% static 'libs/prismjs/prism.js' %}"></script>
+
+    <!-- Lord Icon -->
+    <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+
+    <!-- Modal Js -->
+    <script src="{% static 'js/pages/modal.init.js' %}"></script>
+
+    <!-- App js -->
+    <script src="{% static 'js/app.js' %}"></script>
+
+    <script src="{% static 'js/form.js' %}"></script>
+                                          
+ </body>
+ </html>

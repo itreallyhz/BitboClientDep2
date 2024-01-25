@@ -1,0 +1,99 @@
+{% extends 'user/user_index.html' %}
+{% load static %}
+{% block content %}
+
+       <div class="square">
+               
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                <h4 class="mb-sm-0 ">Projects and Programs Details</h2>
+              
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+     
+    <div class="row h-100">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table  display" style="width:100%; border: 1px solid black;" id="userList">
+                        <thead>
+                            <tr>
+                                <th rowspan="2" style="text-align: center; border: 1px solid black;" >Project Title</th>
+                                <th colspan="2"style="text-align: center; border: 1px solid black;" >Project Date</th>
+                                <th rowspan="2" style="text-align: center; border: 1px solid black;">Project Status</th>
+                                <th rowspan="2" style="text-align: center; border: 1px solid black;">Project Description</th>
+                                <th  rowspan="2" style="text-align: center; border: 1px solid black;">File</th>
+                            </tr>
+                            <tr>
+                                <th style="text-align: center; border: 1px solid black;">Duration</th>
+                                <th style="text-align: center; border: 1px solid black;">Started</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody id="">
+                            <tr>
+                                <td style="text-align: center; border: 1px solid black;">Project 1</td>
+                                <td style="text-align: center; border: 1px solid black;">10 days</td>
+                                <td style="text-align: center; border: 1px solid black;">2024-01-01</td>
+                                <td style="text-align: center; border: 1px solid black;">Completed</td>
+                                <td style="text-align: center; border: 1px solid black;">Some remarks about Project 1</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border: 1px solid black;">Project 2</td>
+                                <td style="text-align: center; border: 1px solid black;">15 days</td>
+                                <td style="text-align: center; border: 1px solid black;">2024-02-01</td>
+                                <td style="text-align: center; border: 1px solid black;">Pending</td>
+                                <td style="text-align: center; border: 1px solid black;">Remarks for Project 2</td>
+                            </tr>
+                    
+                        </tbody>
+                    </table>
+                    
+<!-- Pagination buttons -->
+                <div class="d-flex justify-content-center">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous" onclick="loadPreviousPage()">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <!-- You can dynamically generate page buttons here -->
+                            <!-- For example, if you have 5 pages, you can create 5 buttons -->
+                            <li class="page-item"><a class="page-link pagination-link" href="#" data-page="1">1</a></li>
+                            <li class="page-item"><a class="page-link pagination-link" href="#" data-page="2">2</a></li>
+                            <li class="page-item"><a class="page-link pagination-link" href="#" data-page="3">3</a></li>
+                            <!-- Add more buttons as needed -->
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next" onclick="loadNextPage()">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                </div> <!-- end card-body-->
+            </div>
+        </div> <!-- end col-->
+    </div> <!-- end row-->
+    </div>
+</div>
+
+                <!-- container-fluid -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/user_proj_prog.css' %}">
+{% endblock %}
+
+
+{% block js%}
+
+
+
+   {% endblock %}
+   {% endblock %}

@@ -1,0 +1,180 @@
+{% extends 'user/user_index.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="square">
+    <div class="container-fluid">
+        <div class="row justify-content-start" >
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header align-items-center d-flex justify-content-between">
+                        <h4 class="mb-sm-0"><strong>Clearance & Permits</strong></h4>
+                    </div>
+                    <!-- end card header -->
+                    <div class="card-body">
+                        <div class="live-preview">
+                            <br>
+                            <div class="row">
+                                <div class="col-xxl-3 col-md-6">
+                                    <div class="asterisk">
+                                        <label for="firstname" class="form-label fs-14">Name <span>*</span></label>
+                                        <input type="form" class="form-control" id="first_name" placeholder="Name">
+                                    </div>
+                                </div>
+                                <!--end col-->
+                        
+                                <div class="col-xxl-3 col-md-6">
+                                    <div class="asterisk">
+                                             <label for="Request" class="form-label fs-14">Request <span>*</span></label>
+                                             <div class="input-group">
+                                                 <select class="form-select" id="suffix" >
+                                                     <option value="" disabled selected>Select a Request</option>
+                                                     <option value=""></option>
+                                                     <option value=""></option>
+                                                     <option value=""></option>
+                                                     <option value=""></option>
+                                                     <option value=""></option>
+                                                 </select>
+                                             </div>
+                                             </div>
+                                         </div>
+
+                                         <div class="col-xxl-3 col-md-6">
+                                            <div class="asterisk">
+                                                 <label for="date-picker">Select Date<span>*</span></label>
+                                                 <div class="input-group fs-14">
+                                                     <input type="date"  class="form-control" required>
+                                                     <div class="input-group-append">
+                                                     </div>
+                                             </div>
+                                    </div>
+                                     </div> 
+                                <!--end col-->
+                                <div class="row">
+                                    <div class="col-xxl-3 col-md-6">
+                                        <div class="asterisk">
+                                                 <label for="Request" class="form-label fs-14"><br>Case Reason <span>*</span></label>
+                                                 <div class="input-group">
+                                                     <select class="form-select" id="suffix" >
+                                                         <option value="" disabled selected>Select a Reason</option>
+                                                         <option value=""></option>
+                                                         <option value=""></option>
+                                                         <option value=""></option>
+                                                         <option value=""></option>
+                                                         <option value=""></option>
+                                                     </select>
+                                                 </div>
+                                                 </div>
+                                             </div>
+                                             <div class="col-xxl-3 col-md-6">
+                                                <div class="asterisk">
+                                             <label for="formFile" class="form-label fs-14"><br>Valid ID <span>*</span></label>
+                                        <input class="form-control" type="file" id="formFile" />
+                                        </div>
+                                    </div>
+                            </div>
+                                <!--end col-->
+                                <div class="row">
+                                <div class="col-xxl-3 col-md-6">
+                                    <div class="asterisk">
+                                        <label for="e" class="form-label fs-14"><br>Renewal <span>*</span></label>
+                                            <input type="form" class="form-control" id="" placeholder="Renewal">
+                                    </div>
+                                </div>
+                                <div class="col-xxl-3 col-md-6">
+                                    <div class="asterisk">
+                                        <label for="" class="form-label fs-14"><br>New Permit</label>
+                                        <div class="form-icon right">
+                                            <input type="form" class="form-control" id="" placeholder="New Permit">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                                <!--end col-->
+            
+                                   <!-- start of buttons -->
+                                    <div class="card-body">
+                                        <div class="live-preview">
+                                            <div class="button-container">
+                                                <!-- cancel button with modals -->
+                                                <div class="cancel-button">
+                                                <button class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">Cancel</button>
+                                                <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body text-center p-5">
+                                                                <div class="mt-4">
+                                                                    <h4 class="mb-3">Are you sure you want to cancel?</h4>
+                                                                    <div class="hstack gap-2 justify-content-center">
+                                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">No</button>
+                                                                        <a href="javascript:void(0);" class="btn btn-danger">Yes</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal-dialog -->
+                                                </div><!-- /.modal -->
+                                                </div>
+                                            <div class="save-button">
+                                                <button type="button" class="btn btn-success waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#firstmodal">Save</button>
+                                                        <!-- First modal dialog -->
+                                                                <div class="modal fade" id="firstmodal" aria-hidden="true" tabindex="-1">
+                                                                    <div class="modal-dialog modal-dialog-centered">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-body text-center p-5">
+                                                                                <lord-icon src="https://cdn.lordicon.com/tdrtiskw.json" trigger="loop" colors="primary:#f7b84b,secondary:#405189" style="width:130px;height:130px">
+                                                                                </lord-icon>
+                                                                                <div class="mt-4 pt-4">
+                                                                                    <h4>Are you sure you want to save it?</h4>
+                                                                                 <!-- Toogle to second dialog -->
+                                                                                 <button class="btn btn-light" data-bs-target="#firstmodal" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</button>
+                                                                                 <button class="btn btn-warning" data-bs-target="#secondmodal" data-bs-toggle="modal" data-bs-dismiss="modal" onclick="submitForm()">Yes</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Second modal dialog -->
+                                                                <div class="modal fade" id="secondmodal" aria-hidden="true" tabindex="-1">
+                                                                    <div class="modal-dialog modal-dialog-centered">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-body text-center p-5">
+                                                                                <lord-icon src="https://cdn.lordicon.com/zpxybbhl.json" trigger="loop" colors="primary:#405189,secondary:#0ab39c" style="width:150px;height:150px">
+                                                                                </lord-icon>
+                                                                                <div class="mt-4 pt-3">
+                                                                                    <h4 class="mb-3">Your forms are succesfully saved!</h4>
+                                                                                    <div class="hstack gap-2 justify-content-center">
+                                                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- end save button -->
+                                                        </div><!-- end button container -->
+                                                    </div><!-- end live preview -->
+                                                </div><!-- end card body (Start button) -->
+                                           
+                                        </div><!--card-body start personal info--> 
+                                    </div><!--card personal info--> 
+                                 </div><!--col lg personal info-->
+                            </div><!-- row personal info -->
+                        </div><!-- end container fluid -->
+                    </div><!--end of square-->   
+                                
+
+{% block css %}
+
+<link href="{% static 'css/user_clearance.css' %}" rel="stylesheet" type="text/css" />
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/pages/calendar.init.js'%}"></script>
+{% endblock %}
+
+
+{% endblock %}

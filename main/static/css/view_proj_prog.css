@@ -1,0 +1,23 @@
+h4{
+    margin-top: 2%;
+}
+.square{
+    margin-top: -2%;
+    width: 115%;
+    margin-left: 14%;
+}
+.clickbutton{
+    margin-right: 2%;
+}
+
+.center-div {
+    margin-left: 48%;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  .asterisk span{
+    color:red;
+  }
+  
+  

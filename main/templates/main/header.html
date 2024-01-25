@@ -1,0 +1,119 @@
+
+{% load static %}
+
+            <nav class="navbar navbar-expand-lg navbar-landing fixed-top" id="navbar">
+                <div class="container">
+                        <img src="{% static '/img/Logo.png' %}" class="card-logo">
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="{% url 'services' %}">
+                                    <i class="mdi mdi-view-carousel-outline"></i> <span data-key="t-apps">Services</span>
+                                </a>
+                                <div class="collapse menu-dropdown" id="sidebarApps">
+                                    <ul class="nav nav-sm flex-column">
+                                        <li class="nav-item">
+                                            <a href="{% url 'profiles' %}" class="nav-link" data-key="t-calendar">Resident Profile</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{% url 'brgy_officials' %}" class="nav-link" data-key="t-chat">Brgy. Officials</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{% url 'gov_admin' %}" class="nav-link">Governance & Admin</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="{% url 'projects' %}" class="nav-link">Project & Programs</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="{% url 'incident_logs' %}" class="nav-link">Incident & Case Management</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="{% url 'clearance_permit' %}" class="nav-link">Clearance & Permits</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a href="{% url 'doc_management' %}" class="nav-link">Document Management</a>
+                                                            </li>
+                                                     </ul>
+                                            </div>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link menu-link" href="#">
+                                                <i class="mdi mdi-sticker-text-outline"></i> <span data-key="t-pages">About</span>
+                                            </a>
+                                            <div class="collapse menu-dropdown" id="sidebarApps">
+                                                <ul class="nav nav-sm flex-column">
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">Team</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="{% url 'faqs' %}" class="nav-link">FAQS</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="{% url 'privacy_policy' %}" class="nav-link">Privacy Policy</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a href="{% url 'terms_conditions' %}" class="nav-link">Terms & Conditions
+                                                            </a>
+                                                        </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                           
+                                                    <li class="nav-item">
+                                                        <a class="nav-link menu-link" href="{% url 'system_config' %}">
+                                                            <i class="mdi mdi-wrench"></i> <span data-key="t-system-config">Configuration</span>
+                                                        </a>
+                                                     </li>  
+                           
+                                                     <li class="nav-item">
+                                                        <a class="nav-link menu-link" href="#">
+                                                            <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-apps">Account</span>
+                                                        </a>
+                                                        <div class="collapse menu-dropdown" id="sidebarAuth">
+                                                            <ul class="nav nav-sm flex-column">
+                                                                <li class="nav-item">
+                                                                    <a href="#" class="nav-link">Profile</a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a id="logoutBtn" class="nav-link">Logout</a>
+                                                                </li>
+                                                               </ul>
+                                                                    </div>
+                                                                </li>
+                            
+                                                            </ul>
+                                        
+                                                            
+                                                        </div>
+                                        
+                                                    </div>
+                                                </nav>
+      
+    
+
+ 
+
+<script>
+    //CHECKING FOR USER'S TOKEN
+    document.addEventListener("DOMContentLoaded", function() {
+         var token = localStorage.getItem('token');
+         if (!token) {
+             // Redirect to login if token is not present
+             window.location.href = "/login";  // Adjust the login page URL if necessary
+         }
+     });
+
+    // LOGOOUT
+    function logout() {
+        // Clear token from local storage
+        localStorage.removeItem('token');
+        
+        // Redirect to login page
+        window.location.href = "";  // Adjust the login page URL if necessary
+    }
+
+    // Attach the logout function to the logout button
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+</script>

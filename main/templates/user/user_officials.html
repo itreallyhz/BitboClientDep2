@@ -1,0 +1,253 @@
+{% extends 'user/user_index.html' %}
+{% load static %}
+{% block content %}
+ 
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+    
+                <div class="container-fluid">
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0">Barangay Officials and Administrators</h4>
+                                <div class="page-title-right">
+                                    <!-- <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="{%url 'admin_forms' %}"><strong>Add Brgy. Officials</strong></a></li>
+                                        <li class="breadcrumb-item active"><a href="{%url 'personnel_forms' %}"><strong>Add Personnel</strong></a></li>
+                                    </ol> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="text-center">
+                                                <ul class="list-inline categories-filter animation-nav" id="filter">
+                                                    <li class="list-inline-item"><a class="categories active" data-filter="*">All</a></li>
+                                                    <li class="list-inline-item"><a class="categories" data-filter=".brgyofficials">Brgy Officials</a></li>
+                                                    <li class="list-inline-item"><a class="categories" data-filter=".personnel">Personnel</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="row gallery-wrapper">
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 brgyofficials" data-category="brgyofficials">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-1.png' %}" alt="" />
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                                <div class="text-title fs-18"><strong>Barangay Captain</strong></div>
+                                                                <div class="text-body">
+                                                                <h6><strong>Name:</strong> John Doe</h6>
+                                                                <h6><strong>Contact:</strong> 123-456-789</h6>
+                                                            <h6><strong>Email:</strong> john.doe@email.com</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                             
+                                                <!-- end col -->
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 brgyofficials" data-category="brgyofficials">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-1.png' %}" alt="" />
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="text-title fs-18"><strong>Barangay Councilor</strong></div>
+                                                            <div class="text-body">
+                                                            <h6><strong>Name:</strong> John Doe</h6>
+                                                            <h6><strong>Contact:</strong> 123-456-789</h6>
+                                                        <h6><strong>Email:</strong> john.doe@email.com</h6>
+                                                        </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 brgyofficials" data-category="brgyofficials">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-1.png' %}" alt="" />
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="text-title fs-18"><strong>Barangay Councilor</strong></div>
+                                                            <div class="text-body">
+                                                            <h6><strong>Name:</strong> John Doe</h6>
+                                                            <h6><strong>Contact:</strong> 123-456-789</h6>
+                                                        <h6><strong>Email:</strong> john.doe@email.com</h6>
+                                                        </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 brgyofficials" data-category="brgyofficials">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-1.png' %}" alt="" />
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="text-title fs-18"><strong>Barangay Councilor</strong></div>
+                                                            <div class="text-body">
+                                                            <h6><strong>Name:</strong> John Doe</h6>
+                                                            <h6><strong>Contact:</strong> 123-456-789</h6>
+                                                        <h6><strong>Email:</strong> john.doe@email.com</h6>
+                                                        </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 brgyofficials" data-category="brgyofficials">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-1.png' %}" alt="" />
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="text-title fs-18"><strong>Barangay Councilor</strong></div>
+                                                            <div class="text-body">
+                                                            <h6><strong>Name:</strong> John Doe</h6>
+                                                            <h6><strong>Contact:</strong> 123-456-789</h6>
+                                                        <h6><strong>Email:</strong> john.doe@email.com</h6>
+                                                        </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                               
+                                                
+                                                <!-- end col -->
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 personnel" data-category="personnel">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-1.png' %}" alt="" />
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="text-title fs-18"><strong>Secretary</strong></div>
+                                                            <div class="text-body">
+                                                            <h6><strong>Name:</strong> JMaria Gil</h6>
+                                                            <h6><strong>Contact:</strong> 123-456-789</h6>
+                                                        <h6><strong>Email:</strong> maria@email.com</h6>
+                                                        </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 personnel" data-category="personnel">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-1.png' %}" alt="" />
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="text-title fs-18"><strong>Treasurer</strong></div>
+                                                            <div class="text-body">
+                                                            <h6><strong>Name:</strong> JMaria Gil</h6>
+                                                            <h6><strong>Contact:</strong> 123-456-789</h6>
+                                                        <h6><strong>Email:</strong> maria@email.com</h6>
+                                                        </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 personnel" data-category="personnel">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-1.png' %}" alt="" />
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="text-title fs-18"><strong>Admin 1</strong></div>
+                                                            <div class="text-body">
+                                                            <h6><strong>Name:</strong>Nova Decisl</h6>
+                                                            <h6><strong>Contact:</strong> 123-456-789</h6>
+                                                        <h6><strong>Email:</strong> maria@email.com</h6>
+                                                        </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 personnel" data-category="personnel">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-1.png' %}" alt="" />
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="text-title fs-18"><strong>Admin 2</strong></div>
+                                                            <div class="text-body">
+                                                            <h6><strong>Name:</strong> JMaria Gil</h6>
+                                                            <h6><strong>Contact:</strong> 123-456-789</h6>
+                                                        <h6><strong>Email:</strong> maria@email.com</h6>
+                                                        </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+
+                                            </div>
+                                            <!-- end row -->
+                                        </div>
+                                    </div>
+                                    <!-- end row -->
+                                </div>
+                                <!-- ene card body -->
+                            </div>
+                            <!-- end card -->
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                </div>
+                <!-- container-fluid -->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+    
+
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'css/user_officials.css' %}">
+{% endblock %}
+
+ {% block js%}
+   <!-- JAVASCRIPT -->
+   <script src="{%static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+   <script src="{%static 'libs/simplebar/simplebar.min.j' %}"></script>
+   <script src="{%static 'libs/node-waves/waves.min.js' %}"></script>
+   <script src="{%static 'libs/feather-icons/feather.min.js' %}"></script>
+   <script src="{%static 'js/pages/plugins/lord-icon-2.1.0.js' %}"></script>
+   <script src="{%static 'js/plugins.js' %}"></script>
+
+   <!-- glightbox js -->
+   <script src="{%static 'libs/glightbox/js/glightbox.min.js' %}"></script>
+
+   <!-- isotope-layout -->
+   <script src="{% static 'libs/isotope-layout/isotope.pkgd.min.js' %}"></script>
+
+   <script src="{% static 'js/pages/gallery.init.js' %}"></script>
+
+   <!-- App js -->
+   <script src="{% static 'js/app.js' %}"></script>
+ {% endblock %} 
+
+ {% endblock %}

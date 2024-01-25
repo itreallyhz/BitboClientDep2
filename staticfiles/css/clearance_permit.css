@@ -1,0 +1,16 @@
+
+  .clear{
+    margin-left: 25%;
+  }
+  .center-div {
+    margin-left: 48%;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  .form-label1{
+    font-size: large;
+  }
+  .modal-dialog{
+    margin-top:5%;
+  }

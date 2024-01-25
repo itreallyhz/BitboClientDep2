@@ -1,0 +1,308 @@
+{% extends 'main/index.html' %}
+{% load static %}
+{% block content %}
+<script>
+    // Check for the token when the page loads
+    document.addEventListener("DOMContentLoaded", function() {
+         var token = localStorage.getItem('token');
+         if (!token) {
+             // Redirect to login if token is not present
+             window.location.href = "/login";  
+         }
+     });
+</script>
+ 
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+    
+                <div class="container-fluid">
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0">Barangay Officials and Administrators</h4>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="{%url 'admin_forms' %}"><strong>Add Admin</strong></a></li>
+                                        <li class="breadcrumb-item active">Brgy Officials</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="text-center">
+                                                <ul class="list-inline categories-filter animation-nav" id="filter">
+                                                    <li class="list-inline-item"><a class="categories active" data-filter="*">All</a></li>
+                                                    <li class="list-inline-item"><a class="categories" data-filter=".brgyofficials">Brgy Officials</a></li>
+                                                    <li class="list-inline-item"><a class="categories" data-filter=".personnel">Personnel</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="row gallery-wrapper">
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 brgyofficials" data-category="brgyofficials">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                            <a class="image-popup" href="{% static 'img/small/img-1.jpg' %}" title="">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-1.jpg' %}" alt="" />
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="d-flex align-items-center mt-1">
+                                                                <div class="flex-grow-1 text-muted"><a href="{% url 'officials' %}" class="text-body text-truncate">Name of Brgy Official</a></div>
+                                                               <!-- add content -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 brgyofficials" data-category="brgyofficials">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                            <a class="image-popup" href="{% static 'img/small/img-2.jpg' %}" title="">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-2.jpg' %}" alt="" />
+                                                            </a>
+
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="d-flex align-items-center mt-1">
+                                                                <div class="flex-grow-1 text-muted"><a href="pages-gallery.html" class="text-body text-truncate">Nancy Martino</a></div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="d-flex gap-3">
+                                                                       <!-- add content -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 brgyofficials" data-category="brgyofficials">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                            <a class="image-popup" href="{% static 'img/small/img-3.jpg' %}" title="">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-3.jpg' %}" alt="" />
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="d-flex align-items-center mt-1">
+                                                                <div class="flex-grow-1 text-muted"><a href="pages-gallery.html" class="text-body text-truncate">Elwood Arter</a></div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="d-flex gap-3">
+                                                                       <!-- add content -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 personnel" data-category="personnel">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                            <a class="image-popup" href="{% static 'img/small/img-4.jpg' %}" title="">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-4.jpg' %}" alt="" />
+                                                            </a>
+
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="d-flex align-items-center mt-1">
+                                                                <div class="flex-grow-1 text-muted"><a href="pages-gallery.html" class="text-body text-truncate">Jason McQuaid</a></div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="d-flex gap-3">
+                                                                      <!-- add content -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 brgyofficials" data-category="brgyofficials">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                            <a class="image-popup" href="{% static 'img/small/img-5.jpg' %}" title="">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-5.jpg' %}" alt="" />
+                                                            </a>
+                                                        </div>
+                                                        <div class="box-content">
+                                                            <div class="d-flex align-items-center mt-1">
+                                                                <div class="flex-grow-1 text-muted"><a href="pages-gallery.html" class="text-body text-truncate">Henry Baird</a></div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="d-flex gap-3">
+                                                                       <!-- add content -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 personnel" data-category="personnel">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                            <a class="image-popup" href="{% static 'img/small/img-6.jpg' %}" title="">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-6.jpg' %}" alt="" />
+                                                               
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="d-flex align-items-center mt-1">
+                                                                <div class="flex-grow-1 text-muted"><a href="pages-gallery.html" class="text-body text-truncate">Erica Kernan</a></div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="d-flex gap-3">
+                                                                        <!-- add content -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 personnel" data-category="personnel">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                            <a class="image-popup" href="{% static 'img/small/img-7.jpg' %}" title="">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-7.jpg' %}" alt="" />
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="d-flex align-items-center mt-1">
+                                                                <div class="flex-grow-1 text-muted"><a href="pages-gallery.html" class="text-body text-truncate">James Ballard</a></div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="d-flex gap-3">
+                                                                       <!-- add content -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 personnel" data-category="personnel">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                            <a class="image-popup" href="{% static 'img/small/img-8.jpg' %}" title="">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-8.jpg' %}" alt="" />
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="d-flex align-items-center mt-1">
+                                                                <div class="flex-grow-1 text-muted"><a href="pages-gallery.html" class="text-body text-truncate">RuGriffin</a></div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="d-flex gap-3">
+                                                                       <!-- add content -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 personnel" data-category="personnel">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                            <a class="image-popup" href="{% static 'img/small/img-9.jpg' %}" title="">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-9.jpg' %}" alt="" />
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="d-flex align-items-center mt-1">
+                                                                <div class="flex-grow-1 text-muted"><a href="pages-gallery.html" class="text-body text-truncate">Ron Mackie</a></div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="d-flex gap-3">
+                                                                        <!-- add content -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 brgyofficials" data-category="brgyofficials">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                            <a class="image-popup" href="{% static 'img/small/img-10.jpg' %}" title="">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-10.jpg' %}" alt="" />
+                                                            </a>
+                                                        </div>
+                                                        <div class="box-content">
+                                                            <div class="d-flex align-items-center mt-1">
+                                                                <div class="flex-grow-1 text-muted"><a href="pages-gallery.html" class="text-body text-truncate">Henry Baird</a></div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="d-flex gap-3">
+                                                                        <!-- add content -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+
+                                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 brgyofficials" data-category="brgyofficials">
+                                                    <div class="gallery-box card">
+                                                        <div class="gallery-container">
+                                                            <a class="image-popup" href="{% static 'img/small/img-11.jpg' %}" title="">
+                                                                <img class="gallery-img img-fluid mx-auto" src="{% static 'img/small/img-11.jpg' %}" alt="" />
+                                                            </a>
+
+                                                        </div>
+
+                                                        <div class="box-content">
+                                                            <div class="d-flex align-items-center mt-1">
+                                                                <div class="flex-grow-1 text-muted"><a href="pages-gallery.html" class="text-body text-truncate">Nancy Martino</a></div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="d-flex gap-3">
+                                                                        <!-- add content -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+
+                                            </div>
+                                            <!-- end row -->
+                                        </div>
+                                    </div>
+                                    <!-- end row -->
+                                </div>
+                                <!-- ene card body -->
+                            </div>
+                            <!-- end card -->
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                </div>
+                <!-- container-fluid -->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+    {% endblock %}
+
+{% block css %}
+{% endblock %}
+
+ {% block js%}
+ {% endblock %} 

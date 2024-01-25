@@ -1,0 +1,93 @@
+
+/* .clear{
+  margin-top: -2%;
+  margin-left: 25%;
+} */
+.center-div {
+  margin-left: 48%;
+}
+body {
+  overflow-x: hidden;
+}
+.asterisk span{
+  color:red;
+}
+
+
+
+/* laman ni profiles */
+
+
+.edit{
+  border-radius: 5px;
+  background-color: green;
+  border: none;
+  color: white;
+}
+.edit:hover{
+  background-color: lightgreen;
+  color:black;
+}
+.delete{
+  border-radius: 5px;
+  background-color: red;
+  border: none;
+  color: white;
+}
+.delete:hover{
+  background-color: lightcoral;
+  color:black;
+}
+.d-flex .form-control{
+  border-radius: 5px;
+  margin-left: 60%;
+  width: 20%;
+}
+.search-button{
+  background-color: lightblue;
+  border-radius: 5px;
+  border: none;
+}
+.search-button:hover{
+  background-color: rgb(8, 147, 193);
+  color: white;
+  
+}
+.add-button{
+  background-color: lightgreen;
+  border-radius: 5px;
+  border: none;
+  
+}
+.add-button:hover{
+  background-color: rgb(52, 255, 52);
+  color: white;
+}
+td, th, tr{
+  text-align: center;
+  cursor: pointer;
+}
+tbody tr:hover{
+background-color: lightblue;    
+}
+form{
+  margin-top: -2%
+}
+.container-fluid{
+margin-top: -20%;
+}
+.modal-content{
+  width: 200%;
+  margin-left: -45%;
+}
+.form-label1 span{
+  color: red;
+}
+.form-label1 {
+  text-align: left;
+  display: block;
+}
+.save-button{
+  margin-left: 70%;
+  margin-bottom: 1%;
+}

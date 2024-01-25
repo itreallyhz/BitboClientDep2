@@ -1,0 +1,378 @@
+
+{% extends 'main/index.html' %}
+{% load static %}
+{% block content %}
+
+<div class="square">
+    <div class="container-fluid">
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0 mt-4">CLEARANCES AND PERMITS</h4>
+
+                    <div class="page-title-right">
+                        <!-- <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="{% url 'add_incident' %}"><strong>Add Incident</strong> </a></li>
+                            <li class="breadcrumb-item active">Incident and Case Management</li>
+                        </ol> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row g-2">
+                    <div class="col-lg-auto">
+                        <div class="hstack gap-2">
+                            <a href="{% url 'add_clearances' %}" class="btn btn-primary">
+                                <i class="ri-add-line align-bottom me-1"></i> Add Clearances
+                              </a>
+                              
+                        </div>
+                    </div>
+                    <!--end col-->
+                    <div class="col-lg-3 col-auto">
+                        <div class="search-box">
+                            <input type="text" class="form-control search" id="searchInput" placeholder="Search for Clearances">
+                            <i class="ri-search-line search-icon"></i>
+                        </div>
+                    </div>
+                   
+                </div>
+                <!--end row-->
+            </div>
+            <!--end card-body-->
+        </div>
+        <!--end card-->
+
+
+        <div class="row h-100">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <h5 class="card-title mb-0 flex-grow-1">Case Table</h5>
+                    </div>
+                    <div class="card-body">
+
+                        <table id="" class="table table-striped display" >
+                            <thead>
+                                <tr>
+                                    <th >Name</th>
+                                    <th >Request</th>
+                                    <th >Select Date</th>
+                                    <th>Email</th>
+                                    <th>Approval</th>
+                                </tr>
+                            </thead>
+                            <tbody id="PermitsClearancesTableBody">
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+   <!-- View Modal -->
+<div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewModalLabel">Clearance/Permit Request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="javascript:void(0);">
+                       <!-- Image Container -->
+                       <div class="col-12 text-center">
+                        <div class="square-container">
+                            <label for="formFileMultiple" class="form-label1">Valid ID</label>
+                            <img src="" alt="Preview Image" id="previewImage" class="img-fluid rounded" style="max-width: 100%; max-height: 100%;">
+                        </div> 
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-xxl-3 col-md-6">
+                            <div class="asterisk">
+                                <label for="Name" class="form-label1">Request:</label>
+                                <span id="type_of_request"></span>
+                            </div>
+                        </div>
+                    </div> <!--end row-->
+                    <div class="row g-4">
+                        <div class="col-xxl-3 col-md-6">
+                            <div class="asterisk">
+                                <label for="name_of_resident" class="form-label1">Name of Resident:</label>
+                                <span id="name_of_resident"></span>
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-md-6">
+                            <div class="asterisk">
+                                <label for="permit" class="form-label1">Permit:</label>
+                                <span id="permit"></span>
+                            </div>
+                        </div>
+                    </div> <!--end row-->
+                    <div class="row g-4">
+                        <div class="col-xxl-3 col-md-6">
+                            <div class="asterisk">
+                                <label for="reason" class="form-label1">Reason:</label>
+                                <span id="reason"></span>
+                            </div>
+                        </div>
+                    </div> <!--end row-->
+                    <div class="row g-4">
+                        <div class="col-xxl-3 col-md-6">
+                            <div class="asterisk">
+                                <label for="contact_no" class="form-label1">Contact Number:</label>
+                                <span id="contact_no"></span>
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-md-6">
+                            <div class="asterisk">
+                                <label for="email" class="form-label1">Email:</label>
+                                <span id="email"></span>
+                            </div>
+                        </div>
+                    </div> <!--end row-->
+                        <div class="col-xxl-3 col-md-6">
+                            <div class="asterisk">
+                                <label for="date_requested" class="form-label1">Date Requested</label>
+                                <span id="date_requested"></span>
+                                <!-- Add your file input or any other relevant markup -->
+                            </div>
+                        </div>
+                    <!-- end row -->
+                    <!--APPROVE BUTTON-->
+                    <div class="approve-button">
+                        <button id="approveButton" type="button" class="btn btn-success waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#firstmodal">Approve</button>
+
+                    <!-- DECLINE BUTTON -->
+                    <a href="{% url 'clearance_permit' %}" class="btn btn-light" id="declineButton">Decline</a>
+                    </div>
+                </form>
+            </div><!-- end of modal body -->
+        </div>
+    </div>
+</div>        
+    </div>
+    <!-- container-fluid -->
+</div>
+<!-- End Modal Body -->
+</div>
+</div>
+</div><!--div protection-->
+
+{% block css %}
+
+<link href="{% static 'css/clearance_permit.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+<script>
+$(document).ready(function () {
+    // Function to load barangay official data with pagination
+    function loadClearancesPermits(page = 1, searchTerm = "") {
+        $.ajax({
+            url: "https://bitbo-standard-dep-dd2462e5a0a8.herokuapp.com/clearancespermits/getp?page=" + page + "&limit=10&search=" + encodeURIComponent(searchTerm),
+            type: "GET",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('token')
+            },
+            success: function (data) {
+                // Clear existing data
+                $("#PermitsClearancesTableBody").empty();
+
+                // Check if barangay officials data is available
+                if (data.data.length > 0) {
+                    // Iterate through barangay officials and append rows to the table
+                    $.each(data.data, function (index, clearance_permit) {
+                        var row = '<tr>' +
+                            '<td>' + clearance_permit.name_of_resident +'</td>' +
+                            '<td>' + clearance_permit.type_of_request + '</td>' +
+                            '<td>' + clearance_permit.date_requested + '</td>' +
+                            '<td>' + clearance_permit.email + '</td>' +
+                            '<td>'+
+                           '<button class="btn btn-soft-success" data-clearancepermitid="' + clearance_permit.id + ' " type="button" data-bs-toggle="modal" aria-expanded="false" data-bs-target="#viewModal">' +
+                           '<a href="#" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a>' +
+                           '</button>' +
+                           '</td>' +
+                           '</tr>';
+                        // Append the row to the table body
+                        $("#PermitsClearancesTableBody").append(row);
+                    });
+                } else {
+                    // Handle case when no barangay officials are found
+                    $("#PermitsClearancesTableBody").html('<tr><td colspan="5">No Clearances and Permits found</td></tr>');
+                }
+            },
+            error: function () {
+                // Handle error case
+                console.error('Error fetching Clearances and Permits data.');
+            }
+        });
+    }
+    // Search input change event handler
+    $("#searchInput").on("input", function () {
+        var searchTerm = $(this).val();
+        loadClearancesPermits(1, searchTerm);
+    });
+    // Initial load of barangay officials data
+    loadClearancesPermits();
+    // Function to dynamically generate pagination buttons
+    function generatePaginationButtons(totalPages) {
+     var paginationContainer = $(".pagination");
+     paginationContainer.empty();
+
+    for (var i = 1; i <= totalPages; i++) {
+    var button = '<li class="page-item"><a class="page-link pagination-link" href="#" data-page="' + i + '">' + i + '</a></li>';
+    paginationContainer.append(button);
+    }
+}
+    // Pagination click event handler
+        $(document).on("click", ".pagination-link", function (event) {
+            event.preventDefault();
+            var page = $(this).attr("data-page");
+            loadClearancesPermits(page);
+        });
+
+    // Variable to store the current page
+            var currentPage = 1;
+
+    // Function to load the next page
+        function loadNextPage() {
+            currentPage++;
+            loadClearancesPermits(currentPage);
+        }
+
+    // Function to load the previous page
+        function loadPreviousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                loadClearancesPermits(currentPage);
+            }
+        }
+
+//VIEW
+$(document).ready(function () {
+        // Function to load specific clearance permit data
+        function loadClearancePermitDetails(id) {
+            $.ajax({
+                url: "https://bitbo-standard-dep-dd2462e5a0a8.herokuapp.com/clearancespermits/" + id,
+                type: "GET",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem('token')
+                },
+                success: function (data) {
+                    // Populate the view modal with the retrieved data
+                    $("#type_of_request").text(data.data.type_of_request);
+                    $("#name_of_resident").text(data.data.name_of_resident);
+                    $("#permit").text(data.data.permit);
+                    $("#reason").text(data.data.reason);
+                    $("#contact_no").text(data.data.contact_no);
+                    $("#email").text(data.data.email);
+                    $("#previewImage").attr("src", "data:image/png;base64," + data.data.valid_id_path);
+                    $("#date_requested").text(data.data.date_requested);
+
+                    // Show the view modal
+                    $('#viewModal').modal('show');
+                },
+                error: function () {
+                    // Handle error case
+                    console.error('Error fetching clearance permit details.');
+                }
+            });
+        }
+
+        // View button click event handler
+        $(document).on("click", ".btn-soft-success", function () {
+            var clearancePermitId = $(this).data("clearancepermitid");
+            loadClearancePermitDetails(clearancePermitId);
+        });
+    });
+
+// EMAIL 
+    // Add an event listener to the "Approve" button
+    document.getElementById('approveButton').addEventListener('click', function() {
+            // Trigger the Email.send function
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "mikapmarquez@gmail.com",
+                Password: "4F39070456D7F994F26A169505B1AD1DA300",
+                To: "mrqzmik@gmail.com",
+                From: "Barangay PH",
+                Subject: "Clearance/Permit Approved!",
+                Body: "Your clearance/permit is approved!"
+            }).then(
+                message => alert(message)
+            );
+        });
+
+//EMAIL APPROVED
+const approveButtons = document.getElementsByClassName('approve');
+
+for (let i = 0; i < approveButtons.length; i++) {
+  approveButtons[i].addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const row = e.target.closest('tr');
+    const firstName = row.querySelector('.first-name').textContent;
+    const middleName = row.querySelector('.middle-name').textContent;
+    const lastName = row.querySelector('.last-name').textContent;
+    const userEmail = row.querySelector('.user-email').textContent;
+    const userId = e.target.getAttribute('data-user-id');
+
+    // Generate a random temporary password
+    const temporaryPassword = generateTemporaryPassword(8);
+
+    let emailBody = `
+      Good Day! Madam/ Sir <b>${firstName} ${middleName} ${lastName}</b>, we extend our gratitude for registering an account on AyudaGo. <br>
+      Here's your Temporary Password: <b>${temporaryPassword}</b>
+    `;
+
+    Email.send({
+      SecureToken: "4f8d5b81-06e5-43e5-9ba3-c88091d76471", // Add your token here
+      To: userEmail,
+      From: "ayudagoph2023@gmail.com",
+      Subject: "AyudaGo: Temporary Password",
+      Body: emailBody
+    }).then(message => {
+      // Send a GET request to the approval route
+      fetch(`/approve_user/${userId}?user_password=${encodeURIComponent(temporaryPassword)}`, { method: 'GET' })
+
+        .then(response => {
+          if (response.ok) {
+            // Redirect to the success page after the approval
+            window.location.href = '/accounts';
+          } else {
+            // Handle error response
+            console.error('Error approving user');
+          }
+        });
+    });
+  });
+}
+
+
+//SECURITY--------------
+     // Check for the token when the page loads
+     document.addEventListener("DOMContentLoaded", function() {
+         var token = localStorage.getItem('token');
+         if (token) {
+             // Show the services content if the token is present
+             document.getElementById('whole-content').style.display = 'block';
+         } else {
+             // Redirect to login if token is not present
+             window.location.href = "/login";  // Adjust the login page URL if necessary
+         }
+     });
+    });
+    
+</script>
+{% endblock %}
+{% endblock %}
